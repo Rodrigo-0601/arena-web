@@ -1,0 +1,544 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    /* garantir que a altura da seção principal, ocupe toda a altura da tela */
+
+    background-color: #171717;
+    color: #fff;
+
+    font-family: montserrat;
+}
+
+/* RESET */
+
+
+.container-principal {
+    width: 100%;
+
+    display: flex;
+    /* permitir que o conteúdo seja centralizado de forma inteligente*/
+    justify-content: center;
+    align-items: center;
+}
+
+/* TELA DE APRESENTAÇÃO */
+
+.tela {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+
+}
+
+.tela.ativa {
+    display: flex;
+}
+
+.tela-apresentacao {
+    min-height: 100vh;
+    max-width: 1400px;
+
+    align-items: center;
+}
+
+.apresentacao-conteudo {
+    width: 45%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.etiqueta-projeto {
+    color: #575c49;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.titulo-principal {
+    font-family: 'urban jungle';
+    font-size: 140px;
+
+    margin-bottom: 22px;
+}
+
+.descricao {
+    text-align: center;
+
+    margin-bottom: 8px;
+}
+
+.botao {
+    background-color: #575c49;
+    color: #ccc;
+
+    padding: 10px 60px;
+    border: none;
+
+    font-family: 'doctor glitch';
+    font-size: 20px;
+
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background-color: #7c8266;
+    color: #fff;
+    scale: 1.05;
+}
+
+/* TELA DE APRESENTAÇÃO */
+
+/* TELA DE SELEÇÃO */
+
+.tela-selecao {
+    width: 100%;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.tela-selecao .cabecalho {
+    width: 900px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 25px;
+}
+
+.tela-selecao .cta {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.container-selecao {
+    width: 980px;
+
+    border-top: 4px solid #575c49;
+    margin-top: 25px;
+    padding-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.carta-personagem {
+    width: 250px;
+    height: 308px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+
+    filter: grayscale(100);
+    transition: 0.3s;
+}
+
+.carta-personagem:hover {
+    opacity: 1;
+    filter: grayscale(0);
+    scale: 1.03;
+    outline: 4px solid #575c49;
+    outline-offset: 4px;
+}
+
+.carta-personagem.selecionada {
+    opacity: 1;
+    filter: grayscale(0);
+    scale: 1.03;
+    outline: 4px solid #7c8266;
+    outline-offset: 4px;
+}
+
+.agente {
+    background-image: url('../img/agent.png');
+}
+
+.caipira {
+    background-image: url('../img/caipira.png');
+}
+
+.cyborgue {
+    background-image: url('../img/cyborgue.png');
+}
+
+.mafioso {
+    background-image: url('../img/mafia.png');
+}
+
+.punk {
+    background-image: url('../img/punk.png');
+}
+
+.yakuza {
+    background-image: url('../img/yakuza.png');
+}
+
+/* TELA DE SELEÇÃO */
+
+/* TELA DE CONFIRMAÇÃO */
+
+.tela-confirmacao {
+    /* garante que a tela ocupa a largura total do navegador */
+    width: 100%;
+
+    /* seta a largura máxima para não espalhar demais os elementos em telas grandes  */
+    max-width: 1400px;
+
+    /* garante que a tela ocupe a altura total do navegador */
+    min-height: 100vh;
+
+    /* para alinhar os blocos, posicionando um de cada lado */
+    justify-content: space-between;
+
+    /* para centralizar os blocos verticalmente */
+    align-items: center;
+}
+
+.confirmacao-visual {
+    /* faz com que a div se torne a referencia para a imagem que está dentro dela */
+    position: relative;
+
+    /* define que a largura da div será metade da tela */
+    width: 50%;
+}
+
+.confirmacao-visual::after {
+    /* posiciona o elemento de forma absoluta relativamente ao seu elemento pai */
+    position: absolute;
+
+    /* o content é necessário para o after existir, mesmo que tenha que deixar as aspas vazia */
+    content: "";
+
+    /* seta right, left, top, bottom em 0, garantindo que o after ocupe todo o espaço do elemento pai */
+    inset: 0;
+
+    /* define a largura total disponível */
+    width: 100%;
+
+    /* define a altura total disponível */
+    height: 100%;
+
+    /* cria um degrade linear da esquerda para a direita horizontalmente */
+    background: linear-gradient(90deg, #171717, rgba(0, 0, 0, 0.01), #171717);
+
+    /* protege o elemento, fazendo com que o degrade não bloqueie o click do mouse  */
+    pointer-events: none;
+}
+
+.imagem-personagem-confirmado {
+    /* não deixar a imagem crescer demais e ficar cortada na tela*/
+    max-height: 100vh;
+
+    /* faz a imagem ficar contida dentro do espaço disponivel da div pai, sem perder a proporção original, protegendo a imagem de distorções */
+    object-fit: contain;
+}
+
+.confirmacao-conteudo {
+    /* define que o conteudo/lado direito, ocupe a metade da tela restante */
+    width: 50%;
+
+    /* para posicionar os elementos na tela com flexbox */
+    display: flex;
+
+    /* mudar a direção padrão(linha) para coluna */
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    /* alinhar o texto de forma centralizada */
+    text-align: center;
+}
+
+.nome-personagem-confirmado {
+    /* definir uma fonte e um fallback de fonte reserva */
+    font-family: 'doctor glitch', monospace;
+
+    /* definir o tamanho da fonte */
+    font-size: 38px;
+
+    /* deixar todas as letras em maiúsculo */
+    text-transform: uppercase;
+
+    /* criar espaçamento em baixo do nome */
+    margin-bottom: 20px;
+
+}
+
+.descricao-personagem-confirmado {
+    /* para melhorar a leitura do texto, linhas muito longas atrapalham a leitura */
+    max-width: 500px;
+
+    font-size: 18px;
+    line-height: 1.4;
+    color: #f1f1f1;
+
+    margin-bottom: 50px;
+}
+
+.painel-atributos-confirmacao {
+    max-width: 560px;
+
+    background-color: #282828;
+
+    padding: 38px 48px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    clip-path: polygon(5% 0,
+            95% 0,
+            100% 10%,
+            100% 90%,
+            95% 100%,
+            5% 100%,
+            0 90%,
+            0 10%);
+}
+
+.atributo {
+    display: grid;
+    grid-template-columns:100px 300px 40px;
+    gap: 18px;
+    align-items: center;
+}
+
+.atributo-nome,
+.atributo-valor {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.barra-atributo {
+    height: 20px;
+
+    background-color: #1a1a1a;
+}
+
+.barra-preenchimento {
+    height: 100%;
+    background-color: #969696;
+}
+
+.linha-ataque .atributo-nome,
+.linha-ataque .atributo-valor,
+.linha-defesa .atributo-nome,
+.linha-defesa .atributo-valor,
+.linha-velocidade .atributo-nome,
+.linha-velocidade .atributo-valor,
+.linha-especial .atributo-nome,
+.linha-especial .atributo-valor{
+    color: #f1f1f1;
+}
+
+.ataque{
+    width: 80%;
+}
+
+.defesa{
+    width: 70%;
+}
+
+.velocidade{
+    width: 90%;
+}
+
+.especial{
+    width: 20%;
+}
+
+/* TELA DE CONFIRMAÇÃO */
+
+/* TELA DE BATALHA */
+
+.tela-batalha{
+    width: 100%;
+    max-width: 1400px;
+    min-height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+/* é o conteudo geral da tela,
+todos os elementos internos
+que a compõe: 
+titulo, combatentes, log de batalha, botoes de ação */
+.conteudo-batalha{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    gap: 20px;
+}
+/* titulo principal da tela de batalha  */
+.titulo-batalha{
+    font-family: 'BroncoPersonalUse.ttf';
+    font-size: 60px;
+    text-transform: uppercase;
+
+    text-align: center;
+}
+/* dentro dessa div esta o card do jogador,o vs e o card do onimigo */
+.area-combatentes{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 35px;
+}
+/* class basica para o cartao dos combatentes */
+.card-combatente{
+    width: 42%;
+
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 28px;
+
+    padding: 20px;
+    background-color: #282828;
+    border: 2px solid #fff;
+    box-shadow: 0 18px 20px #f1f1f1f1;
+
+
+    clip-path: polygon(
+            5% 0,
+            95% 0,
+            100% 12%,
+            100% 88%,
+            95% 100%,
+            5% 100%,
+            0 88%,
+            0 12%
+            );
+    
+
+}
+/* card do jogador com destaque azul */
+.card-combatente.jogador{
+    border-color: #1e88ff;
+    box-shadow: 0 0 18px rgba(30, 136, 255, 0.35);
+}
+
+/* card do inimigo com destaque vermelho */
+.card-combatente.inimigo{
+    border-color: #d63b3b;
+    box-shadow: 0 0 18px rgba(214, 59, 59, 0.35);
+}
+
+/* div da imagem do combatente*/
+.imagem-combatente{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
+.imagem-combatente img{
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+}
+
+/* titulo principal da tela de batalha */
+.titulo-batalha{
+    /* font-family: ; */
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+
+    text-align: center;
+}
+
+/* dentro dessa div está o card do jogador, o vs e o card do inimigo */
+.area-combatentes{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 35px;
+}
+
+/* classe base para o cartão dos combatentes */
+.card-combatente{
+    width: 42%;
+    
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 28px;
+
+    padding: 20px;
+    background-color: #202020;
+    border: 2px solid #fff;
+    box-shadow: 0 18px 20px #f1f1f1;
+
+    clip-path: polygon(
+        5% 0,
+        95% 0,
+        100% 12%,
+        100% 88%,
+        95% 100%,
+        5% 100%,
+        0 88%,
+        0 12%
+    );
+}
+
+/* card do jogador com destaque azul */
+.card-combatente.jogador{
+    border-color: #1e88ff;
+    box-shadow: 0 0 18px rgba(30, 136, 255, 0.35);
+}
+
+/* card do inimigo com destaque vermelho */
+.card-combatente.inimigo{
+    border-color: #d63b3b;
+    box-shadow: 0 0 18px rgba(214, 59, 59, 0.35);
+}
+
+/* div da imagem do combatente */
+.imagem-combatente{
+    width: 400px;
+    height: 400px;
+}
+
+.imagem-combatente img{
+    object-fit: contain;
+    height: 350px;
+}
+
+
+
+
+
+
+
+/* TELA DE BATALHA */
